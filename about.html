@@ -1,79 +1,82 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About ScriptB</title>
-    <link rel="stylesheet" href="stylesa.css">
-</head>
-<body>
-    <header>
+    <meta name="description" content="Learn what ScriptB is, why it exists, and how it was designed to be simple and approachable." />
+    <link rel="stylesheet" href="stylesa.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">ScriptB</div>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="backup.html">Examples</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://scriptb-iot.onrender.com" target="_blank" rel="noreferrer">IoT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container page-content">
+      <section class="content-card">
         <h1>About ScriptB</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="backup.html">Backup</a></li>
-                    <li><a href="https://scriptb-iot.onrender.com">IoT</a></li>
-                </ul>
-            </nav>
-        </header>
-    <main>
-    <section id="introduction">
-        <h2>About ScriptB</h2>
-        <p>ScriptB is a very simple scripting language.</p>
-        <p>It is very simple even loopin is. Here's an example code : <code>repeat 10 print hello world</code></p>
-        <p>Currently the version is: <span id="version-container">Loading...</span></p>
-    
-        <script>
-        // Fetch the version from the bscript repository
-            fetch('https://cdn.jsdelivr.net/gh/Brndn-2026/bscript@main/version.txt')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(version => {
-                // Safely update only the version text placeholder, trimming any extra whitespace
-                    document.getElementById('version-container').textContent = version.trim();
-                })
-                .catch(error => {
-                    console.error('Error fetching version:', error);
-                    document.getElementById('version-container').textContent = 'Unable to fetch version';
-                });
-    </script>
-</section>
+        <p>
+          ScriptB is a simple scripting language built in Python. It aims to be readable,
+          approachable, and easy to experiment with for beginners, hobbyists, and people who
+          want lightweight scripting without a lot of ceremony.
+        </p>
+        <p>
+          The project is intentionally small. It favors direct commands and clear syntax over
+          large framework complexity. That makes it useful for small automation tasks, learning
+          core language ideas, and quickly testing script logic.
+        </p>
+      </section>
+
+      <section class="content-card">
+        <h2>Design goals</h2>
+        <ul class="check-list">
+          <li>Simple syntax for common tasks</li>
+          <li>Clear and understandable commands</li>
+          <li>Fast experimentation in a REPL</li>
+          <li>Support for small automation workflows</li>
+          <li>Friendly entry point for new programmers</li>
+        </ul>
+      </section>
+
+      <section class="content-card">
+        <h2>Example</h2>
+        <div class="code-block">
+          <pre><code>print hello bscript
+wait 3
+repeat 3 print hello world</code></pre>
+        </div>
+      </section>
+
+      <section class="content-card">
+        <h2>Current direction</h2>
+        <p>
+          ScriptB is still early-stage. The project is focused on improving the language itself,
+          making documentation stronger, and creating more examples so people can understand how it
+          fits into real work.
+        </p>
+      </section>
     </main>
-    <footer>
-        <p>&copy; 2024 BScript. All rights reserved.</p>
-<script>
-    // Only run the deployment check if we are actually on the main index page
 
-    const deploymentUrl = 'https://brndn-2026.github.io/bscript-website/deployed.txt?t=' + new Date().getTime();
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> ScriptB</p>
+        <a href="https://github.com/Brndn-2026/scriptb" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
 
-    fetch(deploymentUrl)
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
-        .then(isdeployed => {
-            // Clean up the text completely (lowercase it and remove all whitespace/newlines)
-            const status = isdeployed.trim().toLowerCase();
-            
-            // Print what it actually found to your browser console (Press F12 to check)
-            console.log("Deployment status read as:", JSON.stringify(status));
-
-            if (status === 'true') {
-                console.log("Site is active.");
-            } else {
-                console.log("Site is NOT true. Redirecting...");
-                window.location.href = "https://brndn-2026.github.io/scriptb-website/notdeployed.html";
-            }
-        })
-        .catch(error => {
-            console.error('Error checking deployment status:', error);
-        });
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+  </body>
 </html>

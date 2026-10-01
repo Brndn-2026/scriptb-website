@@ -1,75 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ScriptB</title>
-        <link rel="stylesheet" href="stylesi.css">
-    </head>
-    <body>
-        <header>
-            <h1>ScriptB</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="backup.html">Backup</a></li>
-                    <li><a href="https://scriptb-iot.onrender.com">IoT</a></li>
-                </ul>
-            </nav>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScriptB | Simple Python Scripting Language</title>
+    <meta
+      name="description"
+      content="ScriptB is a simple scripting language made in Python for quick scripts, automation, and beginner-friendly programming."
+    />
+    <link rel="stylesheet" href="stylesi.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">ScriptB</div>
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="backup.html">Examples</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://scriptb-iot.onrender.com" target="_blank" rel="noreferrer">IoT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-        <main>
-            <section id="introduction">
-                <h2>Welcome to ScriptB</h2>
-                <p>ScriptB is a very simple scripting language.</p>
-            </section>
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Python-made scripting language</p>
+            <h1>Write simple scripts with less friction.</h1>
+            <p class="lead">
+              ScriptB is a tiny, beginner-friendly language built to make basic programming,
+              automation, and learning easier without the complexity of larger ecosystems.
+            </p>
+            <div class="cta-row">
+              <a class="button primary" href="https://github.com/Brndn-2026/scriptb" target="_blank" rel="noreferrer">View on GitHub</a>
+              <a class="button secondary" href="about.html">Learn more</a>
+            </div>
+          </div>
 
-            <section id="features">
-                <h2>Features</h2>
-                <ul>
-                    <li>Easy to learn and use</li>
-                    <li>Extensive library of built-in functions</li>
-                </ul>
-            </section>
+          <div class="code-panel">
+            <div class="code-header">example.bscript</div>
+            <pre><code>print hello bscript
+wait 3
+repeat 3 print hello world</code></pre>
+          </div>
+        </div>
+      </section>
 
-            <section id="getting-started">
-                <h2>Getting Started</h2>
-                <p>To get started with ScriptB, download the latest version from our official website and follow the installation instructions. You can also check out our comprehensive documentation and tutorials to help you get up and running quickly.</p>
-                <p>Clone the scriptb repository from GitHub: <code>git clone https://github.com/Brndn-2026/scriptb</code></p>
-            </section>
-        </main>
+      <section class="features">
+        <div class="container">
+          <h2>Why people use ScriptB</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Easy to learn</h3>
+              <p>Clear, readable commands make it approachable for beginners and quick experiments.</p>
+            </article>
+            <article class="card">
+              <h3>Built for scripts</h3>
+              <p>Great for simple automation, small tasks, and command-driven programs.</p>
+            </article>
+            <article class="card">
+              <h3>Lightweight</h3>
+              <p>The language aims to be small and understandable without a huge runtime or framework.</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <footer>
-            <p>&copy; 2024 ScriptB. All rights reserved.</p>
-        </footer>
+      <section class="quickstart">
+        <div class="container">
+          <h2>Quick start</h2>
+          <div class="code-block">
+            <pre><code>git clone https://github.com/Brndn-2026/scriptb
+cd scriptb
+run main.bat</code></pre>
+          </div>
+          <p class="note">
+            Or run the interpreter directly with a script file:
+          </p>
+          <div class="code-block compact">
+            <pre><code>scriptb.exe example.bscript</code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
 
-    </body>
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> ScriptB. Built to be simple.</p>
+        <a href="https://github.com/Brndn-2026/scriptb" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </footer>
+
     <script>
-       const deploymentUrl = 'https://brndn-2026.github.io/scriptb-website/deployed.txt?t=' + new Date().getTime();
-
-        fetch(deploymentUrl)
-            .then(response => {
-                if (!response.ok) throw new Error('Network response was not ok');
-                return response.text();
-            })
-            .then(isdeployed => {
-            // Clean up the text completely (lowercase it and remove all whitespace/newlines)
-                const status = isdeployed.trim().toLowerCase();
-            
-            // Print what it actually found to your browser console (Press F12 to check)
-                console.log("Deployment status read as:", JSON.stringify(status));
-
-                if (status === 'true') {
-                    console.log("Site is active.");
-                } else {
-                    console.log("Site is NOT true. Redirecting...");
-                    window.location.href = "https://brndn-2026.github.io/scriptb-website/notdeployed.html";
-                }
-            })
-            .catch(error => {
-                console.error('Error checking deployment status:', error);
-            });
+      document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+  </body>
 </html>
