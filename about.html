@@ -36,6 +36,7 @@
           large framework complexity. That makes it useful for small automation tasks, learning
           core language ideas, and quickly testing script logic.
         </p>
+        <p>Currently the version is: <span id="version-container">Loading...</span></p>
       </section>
 
       <section class="content-card">
@@ -77,6 +78,21 @@ repeat 3 print hello world</code></pre>
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      fetch('https://raw.githubusercontent.com/Brndn-2026/scriptb/main/version.txt', { cache: 'no-store' })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.text();
+        })
+        .then(version => {
+          document.getElementById('version-container').textContent = version.trim();
+        })
+        .catch(error => {
+          console.error('Error fetching version:', error);
+          document.getElementById('version-container').textContent = 'Unable to fetch version';
+        });
     </script>
   </body>
 </html>
